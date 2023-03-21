@@ -80,6 +80,7 @@ public class main {
 
 		//System.out.println(cliente1.nome); (nao funciona, erro The field Cliente.nome is not visible)
 		//pois o atributo cliente1.nome é privado
+		//
 		
 		
 	}
