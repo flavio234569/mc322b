@@ -41,7 +41,7 @@ public class main {
 		Sinistro sinistro2 = new Sinistro("02/02/2023", "rua do sinistro2 numero 2");
 		System.out.println(sinistro2.toString());
 		//testar se o contador não está duplicando o id nos objetos
-		System.out.println("dados sinistro 1 para ver se o id permanece igual antes da criacao do sinistro1");
+		System.out.println("dados sinistro 1 para ver se o id permanece igual, como antes da criacao do sinistro2");
 		System.out.println(sinistro1.toString());
 		
 		//cliente com cpf invalido numero tudo igual
