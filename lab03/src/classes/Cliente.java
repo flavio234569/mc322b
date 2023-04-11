@@ -111,7 +111,7 @@ public class Cliente {
 		return listaVeiculos;
 	}
 
-	public void setListaVeiculos(Veiculo veiculo) {
+	public void adicionaVeiculo(Veiculo veiculo) {
 		this.listaVeiculos.add(veiculo); // = listaVeiculos;
 	}
 	
@@ -120,7 +120,7 @@ public class Cliente {
 	
 	//metodo tostring (traz todos os dados para uma string legivel)
 	public String toString() {
-		String tostr = "Dados do cliente \n"  
+		String tostr = "\nDados do cliente \n"  
 					+  "O nome do cliente e: " + this.getNome() + "\n"
 //					+ "O cpf do cliente e: " + this.getCpf() + "\n"
 //					+ "O cpf informado e: " + String.valueOf(this.validarCPF()) + " \n"

@@ -50,10 +50,10 @@ public class Veiculo {
 	//metodo tostring (traz todos os dados para uma string legivel)
 	public String toString() {
 		String tostr = "\nDados do veiculo \n"  
-					+  "A placa do veiculo e: " + this.getPlaca() + "\n"
-					+ "A marca do veiculo e: " + this.getMarca() + "\n"
-					+ "O modelo do veiculo e: " + this.getModelo() + "\n"
-					+ "O ano de fabricacao do veiculo e: " + this.getAnoFabricacao();
+					+  "Placa: " + this.getPlaca() + "\n"
+					+ "Marca: " + this.getMarca() + "\n"
+					+ "Modelo: " + this.getModelo() + "\n"
+					+ "Ano de fabricacao: " + this.getAnoFabricacao();
 		return tostr;
 				
 	}

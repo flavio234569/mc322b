@@ -81,13 +81,13 @@ public class Sinistro {
 	
 	//metodo tostring (traz todos os dados para uma string legivel)	
 	public String toString() {
-		String tostr = "Dados do sinistro \n"  
-					+  "O id do sinistro e: " + this.getId() + "\n"
-					+ "A data do sinistro e: " + this.getData() + "\n"
-					+ "O endereco do sinistro e: " + this.getEndereco() + "\n"
-					+ "A seguradora e: " + this.getSeguradora() + "\n"
-					+ "O veiculo e: " + this.getVeiculo() + "\n"
-					+ "O cliente e: " + this.getCliente();
+		String tostr = 
+					  "\nSinistro id: " + this.getId() + "\n"
+					+ "Data: " + this.getData() + "\n"
+					+ "Local: " + this.getEndereco() + "\n"
+					+ "Seguradora: " + this.getSeguradora().getNome() + "\n"
+					+ "Placa do veiculo: " + this.getVeiculo().getPlaca() + "\n"
+					+ "Cliente: " + this.getCliente().getNome() + "\n";
 		return tostr;
 				
 	}

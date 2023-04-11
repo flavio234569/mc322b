@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Seguradora {
 	private String nome;
@@ -58,9 +59,14 @@ public class Seguradora {
 		return listaSinistros;
 	}
 
-
-	public void setListaSinistros(List<Sinistro> listaSinistros) {
-		this.listaSinistros = listaSinistros;
+	
+	public boolean gerarSinistro(String data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente, Sinistro sinistro) {
+		
+		sinistro = new Sinistro(data, endereco, seguradora, veiculo, cliente);
+		
+		this.listaSinistros.add(sinistro);
+		//this.listaClientes.add(cliente);
+		return true;
 	}
 
 
@@ -69,9 +75,9 @@ public class Seguradora {
 	}
 
 
-	public void setListaClientes(List<Cliente> listaClientes) {
-		this.listaClientes = listaClientes;
-	}
+//	public void setListaClientes(List<Cliente> listaClientes) {
+//		this.listaClientes = listaClientes;
+//	}
 
 
 	public void setEndereco(String endereco) {
@@ -79,13 +85,34 @@ public class Seguradora {
 	}
 	
 	public boolean cadastrarCliente(Cliente cliente) {
-		
-		
-		
-		return true;
+		if (this.listaClientes.contains(cliente)) {
+			return false;
+		}
+		else {
+			this.listaClientes.add(cliente);
+			return true;
+		}
 		
 	}
 	
+	public boolean removerCliente(Cliente cliente) {
+		if (this.listaClientes.contains(cliente)) {	
+			this.listaClientes.remove(cliente);
+		return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void visualizarSinistro(String nomeCliente) {
+		for (Sinistro sinistro : this.getListaSinistros()) {
+			if (sinistro.getCliente().getNome().contains(nomeCliente)){
+				System.out.print(sinistro.toString());
+			}
+		}
+		//return ;
+	}
 	
 	
 	
@@ -94,13 +121,13 @@ public class Seguradora {
 	
 	//metodo tostring (traz todos os dados para uma string legivel)
 	public String toString() {
-		String tostr = "Dados da seguradora \n"  
-					+  "O nome da seguradora e: " + this.getNome() + "\n"
-					+ "O telefone da seguradora e: " + this.getTelefone() + "\n"
-					+ "O e-mail da seguradora e: " + this.getEmail() + "\n"
-					+ "O endereco da seguradora e: " + this.getEndereco() + "\n"
-					+ "A lista de sinistros e: " + this.getListaSinistros() + "\n"
-					+ "A lista de clientes e: " + this.getListaClientes();
+		String tostr = "\nDados da seguradora \n"  
+					+  "Nome da seguradora: " + this.getNome() + "\n"
+					+ "Telefone da seguradora: " + this.getTelefone() + "\n"
+					+ "E-mail da seguradora: " + this.getEmail() + "\n"
+					+ "Endereco da seguradora: " + this.getEndereco() + "\n"
+					+ "Lista de sinistros por id: " + this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n"
+					+ "A lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n";
 		
 		return tostr;
 				

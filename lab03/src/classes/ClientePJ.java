@@ -5,9 +5,10 @@ package classes;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClientePJ extends Cliente{
-	private String cnpj;
+	private final String cnpj;
 	private Date dataFundacao;
 	
 	public ClientePJ(String nome, String endereco, Date dataLicenca, String educacao,
@@ -22,9 +23,9 @@ public class ClientePJ extends Cliente{
 		return cnpj;
 	}
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
+//	public void setCnpj(String cnpj) {
+//		this.cnpj = cnpj;
+//	}
 
 	public Date getDataNascimento() {
 		return dataFundacao;
@@ -38,17 +39,17 @@ public class ClientePJ extends Cliente{
 	
 	@Override
 	public String toString() {
-		String tostr = "Dados do cliente \n"  
-					+  "O nome do cliente e: " + this.getNome() + "\n"
-					+ "O endereco do cliente e: " + this.getEndereco() + "\n"
-					+ "A data de licenca do cliente e: " + this.getDataLicenca() + "\n"
-					+ "O nivel de escolaridade do cliente e: " + this.getEducacao() + "\n"
-					+ "O genero do cliente e: " + this.getGenero() + "\n"
-					+ "A classe economica do cliente e: " + this.getClasseEconomica() + "\n"
-					+ "A lista de veiculos e: " + this.getListaVeiculos() + "\n"
-					+ "O CNPJ do cliente e: " + this.getCnpj() + "\n"
-					+ "O CNPJ informado e: " + String.valueOf(this.validarCNPJ()) + " \n"
-					+ "A data de nascimento e: " + this.getDataNascimento();
+		String tostr = "\nDados do clientePJ \n"  
+					+ "Nome clientePJ: " + this.getNome() + "\n"
+					+ "Endereco clientePJ: " + this.getEndereco() + "\n"
+					+ "Data licenca clientePJ: " + this.getDataLicenca() + "\n"
+					+ "Escolaridade clientePJ: " + this.getEducacao() + "\n"
+					+ "Genero clientePJ: " + this.getGenero() + "\n"
+					+ "Classe economica clientePJ: " + this.getClasseEconomica() + "\n"
+					+ "Veiculos clientePJ: " + this.getListaVeiculos().stream().map(Veiculo::getPlaca).collect(Collectors.toList()) + "\n"
+					+ "CNPJ: " + this.getCnpj() + "\n"
+					+ "Validade CNPJ: " + String.valueOf(this.validarCNPJ()) + " \n"
+					+ "Data Nascimento clientePJ: " + this.getDataNascimento();
 		
 
 		return tostr;

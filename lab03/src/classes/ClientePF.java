@@ -2,9 +2,10 @@ package classes;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClientePF extends Cliente{
-	private String cpf;
+	private final String cpf;
 	private Date dataNascimento;
 	
 	public ClientePF(String nome, String endereco, Date dataLicenca, String educacao,
@@ -19,9 +20,9 @@ public class ClientePF extends Cliente{
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+//	public void setCpf(String cpf) {
+//		this.cpf = cpf;
+//	}
 
 	public Date getDataNascimento() {
 		return dataNascimento;
@@ -33,21 +34,17 @@ public class ClientePF extends Cliente{
 	
 	@Override
 	public String toString() {
-		String tostr = "Dados do cliente \n"  
-					+  "O nome do cliente e: " + this.getNome() + "\n"
-//					+ "O cpf do cliente e: " + this.getCpf() + "\n"
-//					+ "O cpf informado e: " + String.valueOf(this.validarCPF()) + " \n"
-//					+ "O cliente nasceu em: " + this.getDataNascimento() + "\n"
-//					+ "O cliente tem " + Integer.toString(this.getIdade()) + " anos\n"
-					+ "O endereco do cliente e: " + this.getEndereco() + "\n"
-					+ "A data de licenca do cliente e: " + this.getDataLicenca() + "\n"
-					+ "O nivel de escolaridade do cliente e: " + this.getEducacao() + "\n"
-					+ "O genero do cliente e: " + this.getGenero() + "\n"
-					+ "A classe economica do cliente e: " + this.getClasseEconomica() + "\n"
-					+ "A lista de veiculos e: " + this.getListaVeiculos() + "\n"
-					+ "O CPF do cliente e: " + this.getCpf() + "\n"
-					+ "O CPF informado e: " + String.valueOf(this.validarCPF()) + " \n"
-					+ "A data de nascimento e: " + this.getDataNascimento();
+		String tostr = "\nDados do clientePF \n"  
+					+ "Nome clientePF: " + this.getNome() + "\n"
+					+ "Endereco clientePF: " + this.getEndereco() + "\n"
+					+ "Data de licenca clientePF: " + this.getDataLicenca() + "\n"
+					+ "Escolaridade clientePF: " + this.getEducacao() + "\n"
+					+ "Genero clientePF: " + this.getGenero() + "\n"
+					+ "Classe economica clientePF: " + this.getClasseEconomica() + "\n"
+					+ "Lista de veiculos clientePF: " + this.getListaVeiculos().stream().map(Veiculo::getPlaca).collect(Collectors.toList()) + "\n"
+					+ "CPF: " + this.getCpf() + "\n"
+					+ "Validade CPF: " + String.valueOf(this.validarCPF()) + " \n"
+					+ "Data de nascimento clientePF: " + this.getDataNascimento();
 		
 
 		return tostr;
