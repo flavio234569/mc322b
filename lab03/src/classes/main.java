@@ -173,6 +173,7 @@ public class main {
 	        case "4":
 	        	a = false;
 	        	scan.close();
+	        	break;
 	        }
         }
         
