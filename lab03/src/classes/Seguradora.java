@@ -66,6 +66,11 @@ public class Seguradora {
 		return listaClientes;
 	}
 	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	//metodo gerar sinistro, retorna falso se ja existir um sinistro com os mesmos dados e nao cria o sinistro
 	public boolean gerarSinistro(Date data, String endereco, Veiculo veiculo, Cliente cliente) {
 		
 		Sinistro sinistro = new Sinistro(data, endereco, this, veiculo, cliente);
@@ -80,21 +85,9 @@ public class Seguradora {
 		}
 		this.listaSinistros.add(sinistro);
 		return true;
-		
-	
 	}
 
-
-
-//	public void setListaClientes(List<Cliente> listaClientes) {
-//		this.listaClientes = listaClientes;
-//	}
-
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	
+	//metodo para cadastrar cliente, caso ja exista o objeto, retorna falso
 	public boolean cadastrarCliente(Cliente cliente) {
 		if (this.listaClientes.contains(cliente)) {
 			return false;
@@ -106,8 +99,7 @@ public class Seguradora {
 		
 	}
 	
-	
-	
+	//remove cliente pela String CPF, caso nao exista o cpf retorna falso
 	public boolean removerCliente(String cpfcnpj) {
 		for (Cliente cliente : this.getListaClientes()) {
 			if (cliente instanceof ClientePF) {
@@ -129,18 +121,20 @@ public class Seguradora {
 	return false;
 	}
 	
-	public List<String> listarSinistros() {
-		
-		return this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList());
-		
+	//lista os sinistros por nome dos clientes
+	public List<Integer> listarSinistros() {
+		return this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList());
 		}
 	
-	public void visualizarSinistro(String nomeCliente) {
+	//visualiza o sinistro pelo id
+	public boolean visualizarSinistro(int idsinistro) {
 		for (Sinistro sinistro : this.getListaSinistros()) {
-			if (sinistro.getCliente().getNome().equals(nomeCliente)){
+			if (sinistro.getId() == idsinistro){
 				System.out.print(sinistro.toString());
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	

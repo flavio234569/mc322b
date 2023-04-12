@@ -109,19 +109,27 @@ public class main {
 		System.out.println("inserindo sinistro: " + seguradora1.gerarSinistro(data8, "enderecodosinistro2", veiculopj1n2, clientepj1));
 		System.out.println("inserindo sinistro repetido: " + seguradora1.gerarSinistro(data8, "enderecodosinistro2", veiculopj1n2, clientepj1));
 
+		//metodo toString() de seguradora
 		System.out.print("\nmétodo to string de Seguradora" + seguradora1.toString() + "\n");
 		
-		System.out.print("\nlistar sinistro" + seguradora1.listarSinistros());
+		//listando sinistros
+		System.out.println("\nlista de sinistros: \n" + seguradora1.listarSinistros());
 		
-		seguradora1.visualizarSinistro("nomeclientepf1");
+		//visualizar sinistro de id == 1
+		System.out.print("\nvisualizar sinistro de id == 1");
+		seguradora1.visualizarSinistro(1);
 		
-		System.out.print("\nlista de todos clientes: " + seguradora1.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n");
+		//listando todos os clientes
+		System.out.print("\nlista de todos clientes: \n" + seguradora1.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n");
 		
+		//listando clientes por CPF ou CNPJ
 		System.out.println("\nlista de clientes PJ" );
 		System.out.println(seguradora1.listarClientes("PJ")); //.stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n");
 		System.out.println("lista de clientes PF" );
 		System.out.println(seguradora1.listarClientes("PF")); //.stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n");
 		
+		
+		//interface usando system.in
 		boolean a = true;
         Scanner scan = new Scanner(System.in);
         while(a) {
@@ -159,13 +167,13 @@ public class main {
 	        	break;
 	        case "3":
 	        	System.out.println("lista de sinistros" );
-	        	System.out.println(seguradora1.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n");
+	        	System.out.println(seguradora1.listarSinistros() + "\n");
 	        	System.out.println("\nentre com o id do sinistro para visualizar ou 0 para voltar" );
 	        	String opcao4 = scan.next();
 	        	if (opcao4 == "0") break;
 	        	for(Sinistro sinistro : seguradora1.getListaSinistros()) {
 	        		if(Integer.toString(sinistro.getId()).equals(opcao4)) {
-	        			System.out.println(sinistro);
+	        			seguradora1.visualizarSinistro(sinistro.getId());
 	        		}
 	        	}
 	        	break;

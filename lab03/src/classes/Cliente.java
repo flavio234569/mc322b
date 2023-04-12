@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 public class Cliente {
 	protected static SimpleDateFormat formatadata = new SimpleDateFormat("dd/MM/yyyy");
 	private String nome;
-	//private String cpf;
-	//private String dataNascimento;
-	//private int idade;
 	private String endereco;
 	private Date dataLicenca;
 	private String educacao;
@@ -47,30 +44,6 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-//	public String getCpf() {
-//		return cpf;
-//	}
-//
-//	public void setCpf(String cpf) {
-//		this.cpf = cpf;
-//	}
-//
-//	public String getDataNascimento() {
-//		return dataNascimento;
-//	}
-//
-//	public void setDataNascimento(String dataNascimento) {
-//		this.dataNascimento = dataNascimento;
-//	}
-//
-//	public int getIdade() {
-//		return idade;
-//	}
-//
-//	public void setIdade(int idade) {
-//		this.idade = idade;
-//	}
 
 	public String getEndereco() {
 		return endereco;
@@ -128,10 +101,6 @@ public class Cliente {
 	public String toString() {
 		String tostr = "\nDados do cliente \n"  
 					+  "Nome cliente: " + this.getNome() + "\n"
-//					+ "O cpf do cliente e: " + this.getCpf() + "\n"
-//					+ "O cpf informado e: " + String.valueOf(this.validarCPF()) + " \n"
-//					+ "O cliente nasceu em: " + this.getDataNascimento() + "\n"
-//					+ "O cliente tem " + Integer.toString(this.getIdade()) + " anos\n"
 					+ "Endereco cliente: " + this.getEndereco() + "\n"
 					+ "Data licenca: " + formatadata.format( this.getDataLicenca()) + "\n"
 					+ "Escolaridade: " + this.getEducacao() + "\n"
