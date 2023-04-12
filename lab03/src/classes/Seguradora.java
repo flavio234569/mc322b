@@ -126,7 +126,7 @@ public class Seguradora {
 		return this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList());
 		}
 	
-	//visualiza o sinistro pelo id
+	//visualiza o sinistro tendo id como parametro
 	public boolean visualizarSinistro(int idsinistro) {
 		for (Sinistro sinistro : this.getListaSinistros()) {
 			if (sinistro.getId() == idsinistro){
@@ -137,7 +137,7 @@ public class Seguradora {
 		return false;
 	}
 	
-	
+	//lista clientes por PJ ou PF como parametro na forma de string
 	public List<String> listarClientes(String tipoCliente) {
 		List<Cliente> listaCliente = new ArrayList<Cliente>();
 		for (Cliente cliente : this.getListaClientes()) {
