@@ -53,7 +53,7 @@ public class Veiculo {
 					+  "Placa: " + this.getPlaca() + "\n"
 					+ "Marca: " + this.getMarca() + "\n"
 					+ "Modelo: " + this.getModelo() + "\n"
-					+ "Ano de fabricacao: " + this.getAnoFabricacao();
+					+ "Ano de fabricacao: " + this.getAnoFabricacao() + "\n";
 		return tostr;
 				
 	}

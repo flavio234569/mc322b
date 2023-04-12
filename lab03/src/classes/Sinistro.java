@@ -1,9 +1,13 @@
 package classes;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Sinistro {
+	private static SimpleDateFormat formatadata = new SimpleDateFormat("dd/MM/yyyy");
 	private static int contador = 0;
 	private int id = 0;
-	private String data;
+	private Date data;
 	private String endereco;
 	
 	private Seguradora seguradora;
@@ -13,7 +17,7 @@ public class Sinistro {
 
 	
 	//metodo construtor
-	public Sinistro( String data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente) {
+	public Sinistro( Date data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente) {
 		Sinistro.contador++;
 		this.id = contador;
 		this.data = data;
@@ -35,12 +39,12 @@ public class Sinistro {
 //	}
 
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -83,7 +87,7 @@ public class Sinistro {
 	public String toString() {
 		String tostr = 
 					  "\nSinistro id: " + this.getId() + "\n"
-					+ "Data: " + this.getData() + "\n"
+					+ "Data: " + formatadata.format(this.getData()) + "\n"
 					+ "Local: " + this.getEndereco() + "\n"
 					+ "Seguradora: " + this.getSeguradora().getNome() + "\n"
 					+ "Placa do veiculo: " + this.getVeiculo().getPlaca() + "\n"

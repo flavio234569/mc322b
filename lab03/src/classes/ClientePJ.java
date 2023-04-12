@@ -39,17 +39,11 @@ public class ClientePJ extends Cliente{
 	
 	@Override
 	public String toString() {
-		String tostr = "\nDados do clientePJ \n"  
-					+ "Nome clientePJ: " + this.getNome() + "\n"
-					+ "Endereco clientePJ: " + this.getEndereco() + "\n"
-					+ "Data licenca clientePJ: " + this.getDataLicenca() + "\n"
-					+ "Escolaridade clientePJ: " + this.getEducacao() + "\n"
-					+ "Genero clientePJ: " + this.getGenero() + "\n"
-					+ "Classe economica clientePJ: " + this.getClasseEconomica() + "\n"
-					+ "Veiculos clientePJ: " + this.getListaVeiculos().stream().map(Veiculo::getPlaca).collect(Collectors.toList()) + "\n"
+		String tostr = 
+					super.toString() + "\n"
 					+ "CNPJ: " + this.getCnpj() + "\n"
 					+ "Validade CNPJ: " + String.valueOf(this.validarCNPJ()) + " \n"
-					+ "Data Nascimento clientePJ: " + this.getDataNascimento();
+					+ "Data Nascimento clientePJ: " + formatadata.format(this.getDataNascimento()) + "\n";
 		
 
 		return tostr;
@@ -83,7 +77,7 @@ public class ClientePJ extends Cliente{
 		else {
 			restodig = 11 - restodig;
 		}
-		System.out.println("restodig:" + restodig);
+		//System.out.println("restodig:" + restodig);
 		return restodig;
 	}
 	
@@ -92,7 +86,7 @@ public class ClientePJ extends Cliente{
 		//substituindo ".", "-" e "/" por "" (tres operacoes consecutivas)
 		String cnpjmod = this.cnpj.replaceAll("\\.", "").replaceAll("-", "").replaceAll("/","");
 		
-		System.out.println(cnpjmod);
+		//System.out.println(cnpjmod);
 		
 		//comprimento da string cnpj com apenas numeros (cpfmod)
 		int numerocaracter = cnpjmod.length();

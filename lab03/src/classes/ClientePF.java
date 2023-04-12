@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ClientePF extends Cliente{
+	
 	private final String cpf;
 	private Date dataNascimento;
 	
@@ -34,17 +35,12 @@ public class ClientePF extends Cliente{
 	
 	@Override
 	public String toString() {
-		String tostr = "\nDados do clientePF \n"  
-					+ "Nome clientePF: " + this.getNome() + "\n"
-					+ "Endereco clientePF: " + this.getEndereco() + "\n"
-					+ "Data de licenca clientePF: " + this.getDataLicenca() + "\n"
-					+ "Escolaridade clientePF: " + this.getEducacao() + "\n"
-					+ "Genero clientePF: " + this.getGenero() + "\n"
-					+ "Classe economica clientePF: " + this.getClasseEconomica() + "\n"
-					+ "Lista de veiculos clientePF: " + this.getListaVeiculos().stream().map(Veiculo::getPlaca).collect(Collectors.toList()) + "\n"
+		String tostr = 
+					 super.toString() + "\n"
+
 					+ "CPF: " + this.getCpf() + "\n"
 					+ "Validade CPF: " + String.valueOf(this.validarCPF()) + " \n"
-					+ "Data de nascimento clientePF: " + this.getDataNascimento();
+					+ "Data de nascimento clientePF: " + formatadata.format(this.getDataNascimento()) +"\n";
 		
 
 		return tostr;

@@ -1,8 +1,11 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Seguradora {
 	private String nome;
@@ -58,21 +61,29 @@ public class Seguradora {
 	public List<Sinistro> getListaSinistros() {
 		return listaSinistros;
 	}
-
 	
-	public boolean gerarSinistro(String data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente, Sinistro sinistro) {
-		
-		sinistro = new Sinistro(data, endereco, seguradora, veiculo, cliente);
-		
-		this.listaSinistros.add(sinistro);
-		//this.listaClientes.add(cliente);
-		return true;
-	}
-
-
 	public List<Cliente> getListaClientes() {
 		return listaClientes;
 	}
+	
+	public boolean gerarSinistro(Date data, String endereco, Veiculo veiculo, Cliente cliente) {
+		
+		Sinistro sinistro = new Sinistro(data, endereco, this, veiculo, cliente);
+		
+		for (Sinistro elemento_lista_sinistro : this.getListaSinistros()) {
+			if (elemento_lista_sinistro.getData().equals(sinistro.getData())
+			&& (elemento_lista_sinistro.getEndereco().equals(sinistro.getEndereco())
+			&& (elemento_lista_sinistro.getVeiculo().equals(sinistro.getVeiculo())
+			&& (elemento_lista_sinistro.getCliente().equals(sinistro.getCliente())		)))) {
+				return false;
+			}
+		}
+		this.listaSinistros.add(sinistro);
+		return true;
+		
+	
+	}
+
 
 
 //	public void setListaClientes(List<Cliente> listaClientes) {
@@ -95,28 +106,64 @@ public class Seguradora {
 		
 	}
 	
-	public boolean removerCliente(Cliente cliente) {
-		if (this.listaClientes.contains(cliente)) {	
-			this.listaClientes.remove(cliente);
-		return true;
+	
+	
+	public boolean removerCliente(String cpfcnpj) {
+		for (Cliente cliente : this.getListaClientes()) {
+			if (cliente instanceof ClientePF) {
+				if(((ClientePF) cliente).getCpf().replaceAll("\\.", "").replaceAll("-", "").equals(cpfcnpj.replaceAll("\\.", "").replaceAll("-", ""))) {
+					this.listaClientes.remove(cliente);
+					return true;
+				}			
+			}
+			else if (cliente instanceof ClientePJ) {
+				if(((ClientePJ) cliente).getCnpj().replaceAll("\\.", "").replaceAll("-", "").replaceAll("/", "").equals(cpfcnpj.replaceAll("\\.", "").replaceAll("-", "").replaceAll("/", ""))) {
+					this.listaClientes.remove(cliente);
+					return true;
+				}	
+			}
+			else {
+				return false;
+			}
 		}
-		else {
-			return false;
-		}
+	return false;
 	}
+	
+	public List<String> listarSinistros() {
+		
+		return this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList());
+		
+		}
 	
 	public void visualizarSinistro(String nomeCliente) {
 		for (Sinistro sinistro : this.getListaSinistros()) {
-			if (sinistro.getCliente().getNome().contains(nomeCliente)){
+			if (sinistro.getCliente().getNome().equals(nomeCliente)){
 				System.out.print(sinistro.toString());
 			}
 		}
-		//return ;
 	}
 	
 	
-	
-	
+	public List<String> listarClientes(String tipoCliente) {
+		List<Cliente> listaCliente = new ArrayList<Cliente>();
+		for (Cliente cliente : this.getListaClientes()) {
+			if (tipoCliente == "PJ") {
+				if (cliente instanceof ClientePJ) {
+					//System.out.println(cliente.getNome());
+					listaCliente.add(cliente);
+				}
+			}
+
+			else if(tipoCliente == "PF"){
+				if (cliente instanceof ClientePF) {
+					//System.out.println(cliente.getNome());
+					listaCliente.add(cliente);
+				}
+			}
+
+		}
+		return listaCliente.stream().map(Cliente::getNome).collect(Collectors.toList());
+	}
 	
 	
 	//metodo tostring (traz todos os dados para uma string legivel)
@@ -127,7 +174,10 @@ public class Seguradora {
 					+ "E-mail da seguradora: " + this.getEmail() + "\n"
 					+ "Endereco da seguradora: " + this.getEndereco() + "\n"
 					+ "Lista de sinistros por id: " + this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n"
-					+ "A lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n";
+					+ "Lista de sinistros por cliente: " + this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+					+ "Lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+					+ "Lista de clientes PJ" + this.listarClientes("PJ").stream() + "\n"
+					+ "Lista de clientes PF" + this.listarClientes("PF").stream();
 		
 		return tostr;
 				
