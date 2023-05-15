@@ -18,7 +18,7 @@ public class Sinistro {
 	
 	//metodo construtor
 	public Sinistro( Date data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente) {
-		Sinistro.contador++;
+		contador++;
 		this.id = contador;
 		this.data = data;
 		this.endereco = endereco;

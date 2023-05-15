@@ -166,7 +166,7 @@ public class Seguradora {
 	
 	
 	
-	public void calcularPrecoSeguroCliente(Cliente cliente) {
+	public Double calcularPrecoSeguroCliente(Cliente cliente) {
 		int contadorsinistros = 0;
 		for (int i = 0; i < this.getListaSinistros().size(); i++) {
 			if (this.getListaSinistros().get(i).getCliente().equals(cliente)) {
@@ -176,7 +176,7 @@ public class Seguradora {
 		Double precoseguro = cliente.calculaScore() * (1 + contadorsinistros);
 		cliente.setValorSeguro(precoseguro);
 		
-		return;
+		return precoseguro;
 	}
 	
 	public double calcularReceita(){
@@ -200,8 +200,8 @@ public class Seguradora {
 					+ "Lista de sinistros por id: " + this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n"
 					+ "Lista de sinistros por cliente: " + this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
 					+ "Lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
-					+ "Lista de clientes PJ" + this.listarClientes("PJ").stream() + "\n"
-					+ "Lista de clientes PF" + this.listarClientes("PF").stream();
+					+ "Lista de clientes PJ" + this.listarClientes("PJ").stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+					+ "Lista de clientes PF" + this.listarClientes("PF").stream().map(Cliente::getNome).collect(Collectors.toList());
 		
 		return tostr;
 				

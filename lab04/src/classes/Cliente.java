@@ -13,26 +13,14 @@ public class Cliente {
 	protected static SimpleDateFormat formatadata = new SimpleDateFormat("dd/MM/yyyy");
 	private String nome;
 	private String endereco;
-	//private Date dataLicenca;
-	//private String educacao;
-	//private String genero;
-	//private String classeEconomica;
 	private ArrayList<Veiculo> listaVeiculos;
 	private double valorSeguro;
 	
 	//metodo construtor
 	public Cliente(String nome, String endereco) { //, double valorSeguro){  // , List<Veiculo> listaVeiculos) { //String cpf, String dataNascimento, int idade, 
 		this.nome = nome;
-		//this.cpf = cpf;
-		//this.dataNascimento = dataNascimento;
-		//this.idade = idade;
 		this.endereco = endereco;
-		//this.dataLicenca = dataLicenca;
-		//this.educacao = educacao;
-		//this.genero = genero;
-		//this.classeEconomica = classeEconomica;
 		this.listaVeiculos = new ArrayList<Veiculo>(); // listaVeiculos;
-		//this.valorSeguro = valorSeguro;
 		
 	}
 	
@@ -52,39 +40,6 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-
-//	public Date getDataLicenca() {
-//		return dataLicenca;
-//	}
-//
-//	public void setDataLicenca(Date dataLicenca) {
-//		this.dataLicenca = dataLicenca;
-//	}
-//
-//	public String getEducacao() {
-//		return educacao;
-//	}
-//
-//	public void setEducacao(String educacao) {
-//		this.educacao = educacao;
-//	}
-//
-//	public String getGenero() {
-//		return genero;
-//	}
-//
-//	public void setGenero(String genero) {
-//		this.genero = genero;
-//	}
-//
-//	public String getClasseEconomica() {
-//		return classeEconomica;
-//	}
-//
-//	public void setClasseEconomica(String classeEconomica) {
-//		this.classeEconomica = classeEconomica;
-//	}
 
 	public List<Veiculo> getListaVeiculos() {
 		return listaVeiculos;
