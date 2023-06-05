@@ -6,7 +6,7 @@ public enum MenuOperacoes {
 	LISTAR("Listas"),
 	EXCLUIR("Excluir"),
 	GERAR_SINISTRO("Gerar sinistro"),
-	TRANSFERIR_SEGURO("Transferir seguro"),
+	//TRANSFERIR_SEGURO("Transferir seguro"),
 	CALCULAR_RECEITA_SEGURADORA("Calcular receita seguradora"),
 	SAIR("Sair");
 

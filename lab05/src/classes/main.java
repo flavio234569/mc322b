@@ -251,37 +251,72 @@ public class main {
 	((SeguroPF)seguradora1.getListaSeguro().get(13)).autorizarCondutor(condutor29);
 	((SeguroPF)seguradora1.getListaSeguro().get(14)).autorizarCondutor(condutor30);
 
-	((SeguroPJ)seguradora1.getListaSeguro().get(0)).gerarSinistro(data15, "endereco", condutor1);
-	((SeguroPJ)seguradora1.getListaSeguro().get(1)).gerarSinistro(data15, "endereco", condutor2);
-	((SeguroPJ)seguradora1.getListaSeguro().get(2)).gerarSinistro(data15, "endereco", condutor3);
-	((SeguroPJ)seguradora1.getListaSeguro().get(3)).gerarSinistro(data15, "endereco", condutor4);
-	((SeguroPJ)seguradora1.getListaSeguro().get(4)).gerarSinistro(data15, "endereco", condutor5);
-	((SeguroPJ)seguradora1.getListaSeguro().get(5)).gerarSinistro(data15, "endereco", condutor6);
-	((SeguroPJ)seguradora1.getListaSeguro().get(6)).gerarSinistro(data15, "endereco", condutor7);
-	((SeguroPJ)seguradora1.getListaSeguro().get(7)).gerarSinistro(data15, "endereco", condutor8);
-	((SeguroPJ)seguradora1.getListaSeguro().get(8)).gerarSinistro(data15, "endereco", condutor9);
-	((SeguroPJ)seguradora1.getListaSeguro().get(9)).gerarSinistro(data15, "endereco", condutor10);
+	((SeguroPJ)seguradora1.getListaSeguro().get(0)).gerarSinistro(data15, "endereco"); //, condutor1);
+	((SeguroPJ)seguradora1.getListaSeguro().get(1)).gerarSinistro(data15, "endereco"); //, condutor2);
+	((SeguroPJ)seguradora1.getListaSeguro().get(2)).gerarSinistro(data15, "endereco"); //, condutor3);
+	((SeguroPJ)seguradora1.getListaSeguro().get(3)).gerarSinistro(data15, "endereco"); //, condutor4);
+	((SeguroPJ)seguradora1.getListaSeguro().get(4)).gerarSinistro(data15, "endereco"); //, condutor5);
+	((SeguroPJ)seguradora1.getListaSeguro().get(5)).gerarSinistro(data15, "endereco"); //, condutor6);
+	((SeguroPJ)seguradora1.getListaSeguro().get(6)).gerarSinistro(data15, "endereco"); //, condutor7);
+	((SeguroPJ)seguradora1.getListaSeguro().get(7)).gerarSinistro(data15, "endereco"); //, condutor8);
+	((SeguroPJ)seguradora1.getListaSeguro().get(8)).gerarSinistro(data15, "endereco"); //, condutor9);
+	((SeguroPJ)seguradora1.getListaSeguro().get(9)).gerarSinistro(data15, "endereco"); //, condutor10);
 	
-	((SeguroPF)seguradora1.getListaSeguro().get(10)).gerarSinistro(data15, "endereco", condutor11);
-	((SeguroPF)seguradora1.getListaSeguro().get(11)).gerarSinistro(data15, "endereco", condutor12);
-	((SeguroPF)seguradora1.getListaSeguro().get(12)).gerarSinistro(data15, "endereco", condutor13);
-	((SeguroPF)seguradora1.getListaSeguro().get(13)).gerarSinistro(data15, "endereco", condutor14);
-	((SeguroPF)seguradora1.getListaSeguro().get(14)).gerarSinistro(data15, "endereco", condutor15);
-	((SeguroPF)seguradora1.getListaSeguro().get(15)).gerarSinistro(data15, "endereco", condutor16);
-	((SeguroPF)seguradora1.getListaSeguro().get(16)).gerarSinistro(data15, "endereco", condutor17);
-	((SeguroPF)seguradora1.getListaSeguro().get(17)).gerarSinistro(data15, "endereco", condutor18);
-	((SeguroPF)seguradora1.getListaSeguro().get(18)).gerarSinistro(data15, "endereco", condutor19);
-	((SeguroPF)seguradora1.getListaSeguro().get(19)).gerarSinistro(data15, "endereco", condutor20);
+	((SeguroPF)seguradora1.getListaSeguro().get(10)).gerarSinistro(data15, "endereco"); //, condutor11);
+	((SeguroPF)seguradora1.getListaSeguro().get(11)).gerarSinistro(data15, "endereco"); //, condutor12);
+	((SeguroPF)seguradora1.getListaSeguro().get(12)).gerarSinistro(data15, "endereco"); //, condutor13);
+	((SeguroPF)seguradora1.getListaSeguro().get(13)).gerarSinistro(data15, "endereco"); //, condutor14);
+	((SeguroPF)seguradora1.getListaSeguro().get(14)).gerarSinistro(data15, "endereco"); //, condutor15);
+	((SeguroPF)seguradora1.getListaSeguro().get(15)).gerarSinistro(data15, "endereco"); //, condutor16);
+	((SeguroPF)seguradora1.getListaSeguro().get(16)).gerarSinistro(data15, "endereco"); //, condutor17);
+	((SeguroPF)seguradora1.getListaSeguro().get(17)).gerarSinistro(data15, "endereco"); //, condutor18);
+	((SeguroPF)seguradora1.getListaSeguro().get(18)).gerarSinistro(data15, "endereco"); //, condutor19);
+	((SeguroPF)seguradora1.getListaSeguro().get(19)).gerarSinistro(data15, "endereco"); //, condutor20);
+	
+	seguradora1.getListaSeguro().get(0).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(1).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(2).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(3).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(4).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(5).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(6).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(7).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(8).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(9).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(10).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(11).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(12).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(13).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(14).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(15).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(16).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(17).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(18).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	seguradora1.getListaSeguro().get(19).getListaCondutor().get(0).adicionarSinistro(data15, "endereco");
+	
+//	System.out.println("valor mensal " + ((SeguroPJ)seguradora1.getListaSeguro().get(0)).getValorMensal());
+//	
+//	((SeguroPJ)seguradora1.getListaSeguro().get(0)).calcularValor();
+//	
+//	System.out.println("valor mensal " + ((SeguroPJ)seguradora1.getListaSeguro().get(0)).getValorMensal());
+//	
+//	
+//	System.out.println("valor mensal " + ((SeguroPF)seguradora1.getListaSeguro().get(10)).getValorMensal());
+//	
+//	((SeguroPF)seguradora1.getListaSeguro().get(10)).calcularValor();
+//	
+//	System.out.println("valor mensal " + ((SeguroPF)seguradora1.getListaSeguro().get(10)).getValorMensal());
+//	
 	
 	
-	System.out.println(frota1.getListaVeiculos());
-	System.out.println(clientePF1.getListaVeiculos());
-	System.out.println(seguradora1.getListaSeguro().get(0).getId());
-	System.out.println(seguradora1.getListaSeguro().get(0).getListaCondutor().stream().map(Condutor::getCpf).collect(Collectors.toList()));
-	System.out.println(seguradora1.getSeguroPorCliente(clientePF1).stream().map(Seguro::getId).collect(Collectors.toList())); 
-	System.out.println(seguradora1.getListaSeguro().get(0).getId());
-	System.out.println(seguradora1.getListaSeguro().get(0).getId());
-	System.out.println(seguradora1.getListaSeguro().get(0).getId());
+//	System.out.println(frota1.getListaVeiculos());
+//	System.out.println(clientePF1.getListaVeiculos());
+//	System.out.println(seguradora1.getListaSeguro().get(0).getId());
+//	System.out.println(seguradora1.getListaSeguro().get(0).getListaCondutor().stream().map(Condutor::getCpf).collect(Collectors.toList()));
+//	System.out.println(seguradora1.getSeguroPorCliente(clientePF1).stream().map(Seguro::getId).collect(Collectors.toList())); 
+//	System.out.println(seguradora1.getListaSeguro().get(0).getId());
+//	System.out.println(seguradora1.getListaSeguro().get(0).getId());
+//	System.out.println(seguradora1.getListaSeguro().get(0).getId());
 	
 	Scanner scan = new Scanner (System.in);
 	FuncoesMenu.menuPrincipal(scan, listaSeguradora);

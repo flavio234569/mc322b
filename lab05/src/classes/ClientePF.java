@@ -24,18 +24,16 @@ public class ClientePF extends Cliente{
 	
 	public ClientePF(String nome, String telefone, String endereco, String email,
 			String cpf,
-			String genero, //Date dataLicenca, 
+			String genero,
 			String educacao, Date dataNascimento 
-			//String classeEconomica
+
 			) {
 		
-		super(nome, telefone, endereco, email); //, listaVeiculos);
+		super(nome, telefone, endereco, email); 
 		this.cpf = cpf;
 		this.genero = genero;
-		//this.dataLicenca = dataLicenca;
 		this.educacao = educacao;
 		this.dataNascimento = dataNascimento;
-		//this.classeEconomica = classeEconomica;
 		this.listaVeiculos = new ArrayList<Veiculo>(); 
 	}
 

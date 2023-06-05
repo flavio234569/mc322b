@@ -60,20 +60,34 @@ public class SeguroPF extends Seguro{
 		
 	}
 	
-	public void gerarSinistro(Date data, String endereco, Condutor condutor){
-		Sinistro sinistro1 = new Sinistro(data, endereco, condutor, this);
+	public void gerarSinistro(Date data, String endereco){
+		Sinistro sinistro1 = new Sinistro(data, endereco, null, this);
 		this.getListaSinistros().add(sinistro1);
-		condutor.adicionarSinistro(sinistro1);
+		//condutor.adicionarSinistro(sinistro1);
 	}
 	
 	public List<Sinistro> getListaSinistroPorCliente(){
-		List <Sinistro> sinistroPorCliente = new ArrayList<>() ;
-		for (Sinistro sinistro1 : this.getListaSinistros()) {
-			if (this.clientePF.getCpf().equals(sinistro1.getCondutor().getCpf())) {
-				sinistroPorCliente.add(sinistro1);
-			}
+
+		return this.getListaSinistros();
+		
+//		List <Sinistro> sinistroPorCliente = new ArrayList<>() ;
+//		
+//		
+//		for (Sinistro sinistro1 : this.getListaSinistros()) {
+//			if (this.clientePF.getCpf().equals(sinistro1.getCondutor().getCpf())) {
+//				sinistroPorCliente.add(sinistro1);
+//			}
+//		}
+//		return sinistroPorCliente;
+	}
+	
+	public List<Sinistro> getListaSinistroPorCondutor(){
+		List <Sinistro> sinistroPorCondutor = new ArrayList<>();
+		for (Condutor condutor1 : this.getListaCondutor()) {
+			for(Sinistro sinistro1 : condutor1.getListaSinistros()) 
+			sinistroPorCondutor.add(sinistro1);
 		}
-		return sinistroPorCliente;
+		return sinistroPorCondutor;
 	}
 	
 	
@@ -82,17 +96,17 @@ public class SeguroPF extends Seguro{
 		long idade = (TimeUnit.DAYS.convert(Math.abs(currDate.getTime() - this.clientePF.getDataNascimento().getTime()), TimeUnit.MILLISECONDS))/365;
 
 		if (idade < 30) {
-			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_18_30.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistros().size()); 
+			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_18_30.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistroPorCondutor().size()); 
 			this.setValorMensal(valor);
 		}
 		
 		if ((idade >= 30) && (idade <= 60)) {
-			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_30_60.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistros().size()); 
+			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_30_60.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistroPorCondutor().size()); 
 			this.setValorMensal(valor);
 		}
 		
 		if (idade > 60) {
-			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_60_90.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistros().size()); 
+			Double valor = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_60_90.getValor()*(2 + this.getListaSinistroPorCliente().size()*0.1)*(5 + this.getListaSinistroPorCondutor().size()); 
 			this.setValorMensal(valor);
 		}
 		

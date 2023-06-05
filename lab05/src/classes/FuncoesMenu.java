@@ -47,16 +47,16 @@ public class FuncoesMenu {
 						System.out.println("gerar sinistro");
 						gerarSinistro(scan, listaSeguradora);					
 					break;
+//					case 4:
+//						System.out.println("transferir seguro");
+//						//transferirSeguro(scan, listaSeguradora);					
+//					break;
 					case 4:
-						System.out.println("transferir seguro");
-						//transferirSeguro(scan, listaSeguradora);					
-					break;
-					case 5:
 						System.out.println("calcular receita seguradora");
-						//calcularReceitaSeguradora(scan, listaSeguradora);
+						calcularReceitaSeguradora(scan, listaSeguradora);
 				        
 					break;
-					case 6:
+					case 5:
 						System.out.println("sair");
 						a = false;
 					break;
@@ -329,7 +329,13 @@ public class FuncoesMenu {
 			
 			for (int j = 0; j < listaSeguradora.get(i).getListaSeguro().size(); j++) {
 				System.out.println("Seguro (ID): " + listaSeguradora.get(i).getListaSeguro().get(j).getId());
-				System.out.println("Sinistros (ID): " + listaSeguradora.get(i).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+				System.out.println("Sinistros (sem condutor) (ID): " + listaSeguradora.get(i).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+				
+				for (int k = 0; k < listaSeguradora.get(i).getListaSeguro().get(j).getListaCondutor().size(); k++) {
+					System.out.println("Condutor: " + listaSeguradora.get(i).getListaSeguro().get(j).getListaCondutor().get(k).getCpf());
+					System.out.println("Sinistros (ID): " + listaSeguradora.get(i).getListaSeguro().get(j).getListaCondutor().get(k).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+				}
+				//listaSeguradora.get(i).getListaSeguro().get(j).getListaCondutor().get(0).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList());
 				
 			}
 		}
@@ -361,16 +367,27 @@ public class FuncoesMenu {
 			if (listaSeguradora.get(indexSeguradora).getListaSeguro().get(j) instanceof SeguroPJ) {
 				if(((SeguroPJ)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getClientePJ().equals(listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente))) {
 					System.out.println("Cliente: " + listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente).getNome() + ", CNPJ: " + ((ClientePJ)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).getCnpj());
-					System.out.println("Sinistros (ID): ");
-					System.out.print(listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
-					//System.out.println("]");
+					System.out.println("Sinistros (sem condutor) (ID): ");
+					System.out.println(listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+					for(int k = 0; k < listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaCondutor().size(); k++) {
+						System.out.println("Condutor: " + ((SeguroPJ)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getListaCondutor().get(k).getCpf());
+						System.out.println("Sinistros (por condutor) (ID): ");
+						System.out.println(((SeguroPJ)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getListaCondutor().get(k).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+					}
 				}
 			}
 			else if (listaSeguradora.get(indexSeguradora).getListaSeguro().get(j) instanceof SeguroPF) {
 				if(((SeguroPF)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getClientePF().equals(listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente))) {
 					System.out.println("Cliente: " + listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente).getNome() + ", CPF: " + ((ClientePF)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).getCpf());
 					System.out.println("Sinistros (ID): ");
-					System.out.print(listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+					System.out.println(listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+					for(int k = 0; k < listaSeguradora.get(indexSeguradora).getListaSeguro().get(j).getListaCondutor().size(); k++) {
+						System.out.println("Condutor: " + ((SeguroPF)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getListaCondutor().get(k).getCpf());
+						System.out.println("Sinistros (por condutor) (ID): ");
+						System.out.println(((SeguroPF)listaSeguradora.get(indexSeguradora).getListaSeguro().get(j)).getListaCondutor().get(k).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
+					}
+					
+					
 				}
 			}
 		}
@@ -490,11 +507,6 @@ public class FuncoesMenu {
 			System.out.println(i + " - " + listaSeguradora.get(indexSeguradora).getListaSeguro().get(i).getId());
 		}
 		int indexSeguro = scan.nextInt();
-		System.out.println("selecione o condutor\n");
-		for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().size(); i++) {
-			System.out.println(i + " - " + listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().get(i).getCpf());
-		}
-		int indexCondutor = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("entre a data do sinistro no formato dd/MM/yyyy");
@@ -514,9 +526,26 @@ public class FuncoesMenu {
 		System.out.println("entre o endereco do sinistro");
 		String endereco = scan.nextLine();
 		
-		Sinistro sinistro1 = new Sinistro(data, endereco, listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().get(indexCondutor), listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro));
+		System.out.println("selecione 0 para sinistro sem condutor e 1 para sinistro com condutor\n");
+		int comCondutor = scan.nextInt();
+		if(comCondutor == 1) {
+			System.out.println("selecione o condutor\n");
+			for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().size(); i++) {
+				System.out.println(i + " - " + listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().get(i).getCpf());
+			}
+			int indexCondutor = scan.nextInt();
+			scan.nextLine();
+			listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().get(indexCondutor).adicionarSinistro(data, endereco);
+		}
+		else {
+			if(listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro) instanceof SeguroPJ) {
+				((SeguroPJ)listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro)).gerarSinistro(data, endereco);
+			}
+			else if(listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro) instanceof SeguroPF) {
+				((SeguroPF)listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro)).gerarSinistro(data, endereco);
+			}
+		}
 		
-		listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaSinistros().add(sinistro1);
 
 	}
 //	
@@ -551,13 +580,36 @@ public class FuncoesMenu {
 //	
 //	}
 	
-	static public void calcularReceitaSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora){
-//		System.out.println("selecione a seguradora\n");
-//		for (int i = 0; i < listaSeguradora.size(); i++) {
-//			
-//			System.out.println(i + " - " + listaSeguradora.get(i).getNome());
-//		}
-//		int indexSeguradora = scan.nextInt();
+	static public Double calcularReceitaSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora){
+		
+		Double total = 0.0;
+		for (int i = 0; i < listaSeguradora.size(); i++) {
+			
+			//System.out.println("Seguradora: " + listaSeguradora.get(i).getNome());
+			
+			for (int j = 0; j < listaSeguradora.get(i).getListaSeguro().size(); j++) {
+				listaSeguradora.get(i).getListaSeguro().get(j).calcularValor();
+			}
+			
+		}
+		for (int i = 0; i < listaSeguradora.size(); i++) {
+			
+			System.out.println("Seguradora: " + listaSeguradora.get(i).getNome());
+			
+			for (int j = 0; j < listaSeguradora.get(i).getListaSeguro().size(); j++) {
+				total = total + listaSeguradora.get(i).getListaSeguro().get(j).getValorMensal();
+				
+			}
+			
+		}
+		
+		System.out.printf("Receita: R$ %.2f \n", total);
+		
+		return total;
+		
+		
+		
+		
 //		for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaClientes().size(); i++) {
 //			listaSeguradora.get(indexSeguradora).calcularPrecoSeguroCliente(listaSeguradora.get(indexSeguradora).getListaClientes().get(i));
 //		}

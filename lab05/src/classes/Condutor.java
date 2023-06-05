@@ -70,8 +70,9 @@ public class Condutor {
 //	}
 	
 	
-	public void adicionarSinistro(Sinistro sinistro) {
-		this.listaSinistros.add(sinistro);
+	public void adicionarSinistro(Date data, String endereco) {
+		Sinistro sinistro1 = new Sinistro(data, endereco, this, null);
+		this.listaSinistros.add(sinistro1);
 	}
 
 
