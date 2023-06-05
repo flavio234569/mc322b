@@ -53,18 +53,5 @@ public class Veiculo {
 				+ anoFabricacao + "]";
 	}
 
-	
-	
-	
-//	//metodo tostring (traz todos os dados para uma string legivel)
-//	public String toString() {
-//		String tostr = "\nDados do veiculo \n"  
-//					+  "Placa: " + this.getPlaca() + "\n"
-//					+ "Marca: " + this.getMarca() + "\n"
-//					+ "Modelo: " + this.getModelo() + "\n"
-//					+ "Ano de fabricacao: " + this.getAnoFabricacao() + "\n";
-//		return tostr;
-//				
-//	}
 		
 }

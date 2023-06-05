@@ -18,6 +18,9 @@ public class FuncoesMenu {
         MenuListar menuListar[] = MenuListar.values();
         MenuExcluir menuExcluir[] = MenuExcluir.values();
         
+        //o menu foi pensado de forma a minimizar a entrada manual de dados, listando os objetos
+        //e selecionando, assim fica mais facil visualizar e evita erros de entrada
+        
 		 int opUsuario;
 	        boolean a = true;
 	        
@@ -47,10 +50,6 @@ public class FuncoesMenu {
 						System.out.println("gerar sinistro");
 						gerarSinistro(scan, listaSeguradora);					
 					break;
-//					case 4:
-//						System.out.println("transferir seguro");
-//						//transferirSeguro(scan, listaSeguradora);					
-//					break;
 					case 4:
 						System.out.println("calcular receita seguradora");
 						calcularReceitaSeguradora(scan, listaSeguradora);
@@ -70,7 +69,7 @@ public class FuncoesMenu {
 	}
 	
 	
-	
+	//submenu
 	static public void subMenuExcluir(Scanner scan, MenuExcluir menuExcluir[], ArrayList<Seguradora> listaSeguradora) {
         for (MenuExcluir me: menuExcluir) {
         	System.out.println(me.ordinal() + " - " + me.getStringmenuexcluir());
@@ -99,13 +98,17 @@ public class FuncoesMenu {
 			excluirCondutor(scan, listaSeguradora);
 		break;
 		case 5:
+			System.out.println("excluir frota\n");
+			excluirFrota(scan, listaSeguradora);
+		break;
+		case 6:
 		break;
 
         
 		}
 	}
 	
-	
+	//submenu
 	static public void subMenuListar(Scanner scan, MenuListar menuListar[], ArrayList<Seguradora> listaSeguradora) {
         for (MenuListar ml: menuListar) {
         	System.out.println(ml.ordinal() + " - " + ml.getStringmenucadastrar());
@@ -152,6 +155,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//submenu
 	static public void subMenuCadastrar(Scanner scan, MenuCadastrar menuCadastrar[], ArrayList<Seguradora> listaSeguradora) {
         for (MenuCadastrar mc: menuCadastrar) {
         	System.out.println(mc.ordinal() + " - " + mc.getStringmenucadastrar());
@@ -187,6 +191,7 @@ public class FuncoesMenu {
 		
 	}
 	
+	//metodo excluir cliente
 	static public void excluirCliente(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -216,6 +221,7 @@ public class FuncoesMenu {
 		listaSeguradora.get(indexSeguradora).getListaClientes().remove(indexCliente);
 	}
 	
+	//excluir veiculo
 	static public void excluirVeiculo(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -257,6 +263,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//excluir sinistro
 	static public void excluirSinistro(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -279,6 +286,7 @@ public class FuncoesMenu {
 		
 	}
 	
+	//exclui seguro
 	static public void excluirSeguro(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -293,6 +301,7 @@ public class FuncoesMenu {
 		listaSeguradora.get(indexSeguradora).getListaSeguro().remove(indexSeguro);
 	}
 	
+	//excluir condutor
 	static public void excluirCondutor(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -311,10 +320,33 @@ public class FuncoesMenu {
 		int indexCondutor = scan.nextInt();
 		
 		listaSeguradora.get(indexSeguradora).getListaSeguro().get(indexSeguro).getListaCondutor().remove(indexCondutor);
-		
-		
 	}
 	
+	//excluir frota
+	static public void excluirFrota(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
+		System.out.println("selecione a seguradora\n");
+		for (int i = 0; i < listaSeguradora.size(); i++) {
+			System.out.println(i + " - " + listaSeguradora.get(i).getNome());
+		}
+		int indexSeguradora = scan.nextInt();
+		System.out.println("selecione o cliente\n");
+		for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaClientes().size(); i++) {
+			System.out.println(i + " - " + listaSeguradora.get(indexSeguradora).getListaClientes().get(i).getNome());
+		}
+		int indexCliente = scan.nextInt();
+		if(listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente) instanceof ClientePF) {
+			System.out.println("Cliente pessoa fisica nao possui frotas");
+			return;
+		}
+		System.out.println("selecione a frota\n");
+		for (int i = 0; i < ((ClientePJ)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).getListaFrota().size(); i++) {
+			System.out.println(i + " - " + ((ClientePJ)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).getListaFrota().get(i).getCode());
+		}
+		int indexFrota = scan.nextInt();
+		((ClientePJ)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).atualizarFrota(((ClientePJ)listaSeguradora.get(indexSeguradora).getListaClientes().get(indexCliente)).getListaFrota().get(indexFrota));
+	}
+	
+	//listar clientes
 	static public void listarClientePorSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora){
 		
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -339,18 +371,10 @@ public class FuncoesMenu {
 				
 			}
 		}
-		
-		
-		
-		//System.out.println("Sinistros(ID): " + listaSeguradora.get(indexSeguradora).listarSinistros());   //listaSeguradora.get(i).getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()));
-		
-//		System.out.println("entre o id do sinistro para visualizar ou 0 para retornar: ");
-//		int idSinistro = scan.nextInt();
-//		if(idSinistro != 0) {
-//		listaSeguradora.get(indexSeguradora).visualizarSinistro(idSinistro);
-//		}
+
 	}
 	
+	//listar sinistros por cliente
 	static public void listarSinistroPorCliente(Scanner scan, ArrayList<Seguradora> listaSeguradora){
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -393,6 +417,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//lista veiculos por cliente
 	static public void listarVeiculosPorCliente(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -417,6 +442,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//lista veiulo por seguradora
 	static public void listarVeiculosPorSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		for (int i = 0; i < listaSeguradora.size(); i++) {
 			System.out.println("Seguradora: " + listaSeguradora.get(i).getNome());
@@ -437,6 +463,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//listar seguros por seguradora
 	static public void listarSeguroPorSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -445,7 +472,7 @@ public class FuncoesMenu {
 		}	
 	}
 	
-	
+	//listar seguros por cliente
 	static public void listarSeguroPorCliente(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -495,7 +522,7 @@ public class FuncoesMenu {
 	
 	
 	
-	
+	//gerar sinistro
 	static public void gerarSinistro(Scanner scan, ArrayList<Seguradora> listaSeguradora){
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -549,74 +576,23 @@ public class FuncoesMenu {
 
 	}
 //	
-//	
-//	static public void transferirSeguro(Scanner scan, ArrayList<Seguradora> listaSeguradora){
-//		System.out.println("selecione a seguradora\n");
-//		for (int i = 0; i < listaSeguradora.size(); i++) {
-//			
-//			System.out.println(i + " - " + listaSeguradora.get(i).getNome());
-//		}
-//		int indexSeguradora = scan.nextInt();
-//		System.out.println("selecione o cliente cedente\n");
-//		
-//		for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaClientes().size(); i++) {
-//			System.out.println(i + " - " + listaSeguradora.get(indexSeguradora).getListaClientes().get(i).getNome());
-//		}
-//		int indexClienteCedente = scan.nextInt();
-//		System.out.println("selecione o cliente cessionario\n");
-//		int indexClienteCessionario = scan.nextInt();
-//		
-//		int tamanhoListaCarroCedente = listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCedente).getListaVeiculos().size();
-//		
-//		for (int i = 0; i < tamanhoListaCarroCedente; i++) {
-//			
-//			Veiculo veiculo = listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCedente).getListaVeiculos().get(0);
-//			listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCessionario).adicionaVeiculo(veiculo);
-//			listaSeguradora.get(indexSeguradora).calcularPrecoSeguroCliente(listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCessionario));
-//			
-//			listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCedente).getListaVeiculos().remove(veiculo);
-//			listaSeguradora.get(indexSeguradora).calcularPrecoSeguroCliente(listaSeguradora.get(indexSeguradora).getListaClientes().get(indexClienteCedente));
-//		}
-//	
-//	}
-	
+
+	//atualiza valor do seguro de cada seguro e calcula receita de cada seguradora
 	static public Double calcularReceitaSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora){
 		
 		Double total = 0.0;
 		for (int i = 0; i < listaSeguradora.size(); i++) {
 			
-			//System.out.println("Seguradora: " + listaSeguradora.get(i).getNome());
-			
-			for (int j = 0; j < listaSeguradora.get(i).getListaSeguro().size(); j++) {
-				listaSeguradora.get(i).getListaSeguro().get(j).calcularValor();
-			}
-			
-		}
-		for (int i = 0; i < listaSeguradora.size(); i++) {
-			
 			System.out.println("Seguradora: " + listaSeguradora.get(i).getNome());
 			
-			for (int j = 0; j < listaSeguradora.get(i).getListaSeguro().size(); j++) {
-				total = total + listaSeguradora.get(i).getListaSeguro().get(j).getValorMensal();
-				
-			}
-			
+			total = listaSeguradora.get(i).calcularReceita();
 		}
 		
 		System.out.printf("Receita: R$ %.2f \n", total);
-		
 		return total;
-		
-		
-		
-		
-//		for (int i = 0; i < listaSeguradora.get(indexSeguradora).getListaClientes().size(); i++) {
-//			listaSeguradora.get(indexSeguradora).calcularPrecoSeguroCliente(listaSeguradora.get(indexSeguradora).getListaClientes().get(i));
-//		}
-//		System.out.println("\na receita total e: R$ " + listaSeguradora.get(indexSeguradora).calcularReceita());
-		
 	}
 	
+	//cadastra cliente
 	static public void cadastrarCliente(Scanner scan, ArrayList<Seguradora> listaSeguradora){
 		System.out.println("digite 0 para PF e 1 para PJ");
 		int pfoupj = scan.nextInt();
@@ -749,6 +725,7 @@ public class FuncoesMenu {
 		
 	}
 	
+	//cadastrar veiculo em uma frota ou cliente PF
 	static public void cadastrarVeiculo(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -789,6 +766,7 @@ public class FuncoesMenu {
 		}
 	}
 	
+	//cadastra frota
 	static public void cadastrarFrota(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("selecione a seguradora\n");
 		for (int i = 0; i < listaSeguradora.size(); i++) {
@@ -810,6 +788,7 @@ public class FuncoesMenu {
 		((ClientePJ)listaSeguradora.get(indexSeguradora).listarClientes("PJ").get(indexCliente)).cadastrarFrota(frota1);
 	}
 	
+	//cadastra uma nova seguradora
 	static public void cadastrarSeguradora(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		scan.nextLine();
 		boolean a = true;
@@ -849,6 +828,8 @@ public class FuncoesMenu {
 		listaSeguradora.add(seguradora);
 		
 	}
+	
+	//cadastra novos condutores
 	static public void cadastrarCondutor(Scanner scan, ArrayList<Seguradora> listaSeguradora) {
 		System.out.println("digite 0 para cliente PF e 1 para cliente PJ");
 		int pfoupj = scan.nextInt();

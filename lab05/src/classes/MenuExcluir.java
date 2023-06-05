@@ -7,6 +7,7 @@ public enum MenuExcluir {
 	EXCLUIRSINISTRO("Excluir sinistro"),
 	EXCLUIRSEGURO("Excluir seguro"),
 	EXCLUIRCONDUTOR("Excluir condutor"),
+	EXCLUIRFROTA("Excluir frota"),
 	VOLTAR("Voltar");
 
 	String stringmenuexcluir;

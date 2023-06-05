@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Validacao {
 	
+	//classe para metodos estaticos
 	//metodo para retornar o resto de:
 	//(10*1o digito + ... + 2*9o digito)*10/11 (para mult = 10)
 	//(11*1o digito + ... + 3*9o digito + retorno(mult = 10)*2)*10/11 (para mult = 11)
@@ -108,8 +109,6 @@ public class Validacao {
 		//substituindo ".", "-" e "/" por "" (tres operacoes consecutivas)
 		String cnpjmod = stringcnpj.replaceAll("\\.", "").replaceAll("-", "").replaceAll("/","");
 		
-		//System.out.println(cnpjmod);
-		
 		//comprimento da string cnpj com apenas numeros (cpfmod)
 		int numerocaracter = cnpjmod.length();
 		
@@ -151,6 +150,7 @@ public class Validacao {
 		
 	}
 	
+	//valida o nome, verifica se o nome tem mais de 3 caracteres e se todos os caracteres sao letras
 	static public boolean validarNome(String nome) {
 		String nomemod = nome.replaceAll(" ", "");
 			if (nomemod.length()<3) {

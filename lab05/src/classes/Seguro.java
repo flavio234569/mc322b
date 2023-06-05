@@ -11,17 +11,13 @@ public abstract class Seguro {
 	private Date dataInicio;
 	private Date dataFim;
 	
-//	private String dataInicio = null;
-//	private String dataFim = null;
 	private Seguradora seguradora;
 	private List<Sinistro> listaSinistros;
 	private List<Condutor> listaCondutor;
 	private Double valorMensal;
 	
-	
+	//metodo construtor
 	public Seguro(Date dataInicio, Date dataFim, Seguradora seguradora) {
-	//public Seguro(String dataInicio, String dataFim, Seguradora seguradora, Double valorMensal) {
-		
 		contador++;
 		this.id = contador;
 		this.dataInicio = dataInicio;
@@ -29,10 +25,9 @@ public abstract class Seguro {
 		this.seguradora = seguradora;
 		this.listaSinistros = new ArrayList<Sinistro>();
 		this.listaCondutor = new ArrayList<Condutor>();
-		//this.valorMensal = valorMensal;
 	}
 
-
+	//metodos getters e setters
 	public static int getContador() {
 		return contador;
 	}
@@ -47,71 +42,29 @@ public abstract class Seguro {
 		return id;
 	}
 
-
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-
-
-//	public Date getDataInicio() {
-//		return dataInicio;
-//	}
-
-
-//	public void setDataInicio(Date dataInicio) {
-//		this.dataInicio = dataInicio;
-//	}
-
-
-//	public Date getDataFim() {
-//		return dataFim;
-//	}
-
-
-//	public void setDataFim(Date dataFim) {
-//		this.dataFim = dataFim;
-//	}
-
-
 	public Seguradora getSeguradora() {
 		return this.seguradora;
 	}
-
 
 	public void setSeguradora(Seguradora seguradora) {
 		this.seguradora = seguradora;
 	}
 
-
 	public List<Sinistro> getListaSinistros() {
 		return listaSinistros;
 	}
-
-
-//	public void setListaSinistros(List<Sinistro> listaSinistros) {
-//		this.listaSinistros = listaSinistros;
-//	}
-
 
 	public List<Condutor> getListaCondutor() {
 		return listaCondutor;
 	}
 
-
-//	public void setListaCondutor(List<Condutor> listaCondutor) {
-//		this.listaCondutor = listaCondutor;
-//	}
-
-
 	public Double getValorMensal() {
 		return valorMensal;
 	}
 
-
 	public void setValorMensal(Double valorMensal) {
 		this.valorMensal = valorMensal;
 	}
-	
 	
 	public boolean autorizarCondutor() {
 		return false;
@@ -131,30 +84,10 @@ public abstract class Seguro {
 		
 	}
 
-
 	@Override
 	public String toString() {
 		return "Seguro [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim //+ ", seguradora=" + seguradora
 				+ ", listaSinistros=" + listaSinistros + ", listaCondutor=" + listaCondutor + ", valorMensal="
 				+ valorMensal + "]";
-	}
-
-
-
-
-	
-	
-	
-
-//	@Override
-//	public String toString() {
-//		return "Seguro [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", seguradora=" + seguradora
-//				+ ", listaSinistros=" + listaSinistros + ", listaCondutor=" + listaCondutor + ", valorMensal="
-//				+ valorMensal + "]";
-//	}
-	
-	
-	
-	
-	
+	}	
 }

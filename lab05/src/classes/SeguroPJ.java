@@ -10,10 +10,9 @@ import java.util.concurrent.TimeUnit;
 public class SeguroPJ extends Seguro{
 	private Frota frota;
 	private ClientePJ clientePJ;
-
+	
+	//metodo construtor
 	public SeguroPJ(Date dataInicio, Date dataFim, Seguradora seguradora, Frota frota, ClientePJ clientePJ) {
-	//public SeguroPJ(String dataInicio, String dataFim, Seguradora seguradora, Double valorMensal, Frota frota, ClientePJ clientePJ) {
-
 		super(dataInicio, dataFim, seguradora);
 		this.frota = frota;
 		this.clientePJ = clientePJ;
@@ -36,19 +35,18 @@ public class SeguroPJ extends Seguro{
 	}
 	
 	
-
+	//adiciona condutor
 	public boolean autorizarCondutor(Condutor condutor){
-		
 		for (Condutor condutor1 : this.getListaCondutor()) {
 			if (condutor1.getCpf().equals(condutor.getCpf())) {
 				return false;
 			}
 		}
-		
 		this.getListaCondutor().add(condutor);
 		return true;
 	}
 	
+	//remove condutor
 	public boolean desautorizarCondutor(Condutor condutor){
 		if(!(this.getListaCondutor()).contains(condutor)) {
 			return false;
@@ -59,18 +57,19 @@ public class SeguroPJ extends Seguro{
 		}
 	}
 	
-	
-	
+	//gera o sinistro
 	public void gerarSinistro(Date data, String endereco){
 		Sinistro sinistro1 = new Sinistro(data, endereco, null, this);
 		this.getListaSinistros().add(sinistro1);
 		//condutor.getListaSinistros().add(sinistro1);
 	}
 	
+	//retorna lista de sinistro por cliente (sinistros do objeto seguro)
 	public List<Sinistro> getListaSinistroPorCliente(){
 		return this.getListaSinistros();
 	}
 	
+	//retorna lista de sinistro por condutor
 	public List<Sinistro> getListaSinistroPorCondutor(){
 		List <Sinistro> sinistroPorCondutor = new ArrayList<>();
 		for (Condutor condutor1 : this.getListaCondutor()) {
@@ -80,7 +79,7 @@ public class SeguroPJ extends Seguro{
 		return sinistroPorCondutor;
 	}
 	
-	
+	//calcula o valor mensal do sinistro
 	public void calcularValor(){
 		Date currDate = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		long idade = (TimeUnit.DAYS.convert(Math.abs(currDate.getTime() - this.clientePJ.getDataFundacao().getTime()), TimeUnit.MILLISECONDS))/365;

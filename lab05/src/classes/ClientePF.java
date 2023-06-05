@@ -16,18 +16,13 @@ public class ClientePF extends Cliente{
 	
 	private final String cpf;
 	private String genero;
-	//private Date dataLicenca;
 	private String educacao;
 	private Date dataNascimento;
-	//private String classeEconomica;
 	private List<Veiculo> listaVeiculos;
 	
+	//metodo construtor
 	public ClientePF(String nome, String telefone, String endereco, String email,
-			String cpf,
-			String genero,
-			String educacao, Date dataNascimento 
-
-			) {
+			String cpf, String genero, String educacao, Date dataNascimento) {
 		
 		super(nome, telefone, endereco, email); 
 		this.cpf = cpf;
@@ -37,7 +32,7 @@ public class ClientePF extends Cliente{
 		this.listaVeiculos = new ArrayList<Veiculo>(); 
 	}
 
-
+	//metodos getters e setters
 	public String getCpf() {
 		return cpf;
 	}
@@ -50,7 +45,6 @@ public class ClientePF extends Cliente{
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
 
 	public String getEducacao() {
 		return educacao;
@@ -66,20 +60,13 @@ public class ClientePF extends Cliente{
 		return dataNascimento;
 	}
 
-
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-
 	public List<Veiculo> getListaVeiculos() {
 		return listaVeiculos;
 	}
-
-
-//	public void setListaVeiculos(ArrayList<Veiculo> listaVeiculos) {
-//		this.listaVeiculos = listaVeiculos;
-//	}
 
 	public void cadastrarVeiculo(Veiculo veiculo) {
 		this.listaVeiculos.add(veiculo);
@@ -96,68 +83,5 @@ public class ClientePF extends Cliente{
 				+ dataNascimento + ", listaVeiculos=" + listaVeiculos + ", getNome()=" + getNome() + ", getTelefone()="
 				+ getTelefone() + ", getEndereco()=" + getEndereco() + ", getEmail()=" + getEmail() + "]";
 	}
-
-
-//	@Override
-//	public String toString() {
-//		return "ClientePF [formatadata=" + formatadata + ", cpf=" + cpf + ", genero=" + genero + ", educacao="
-//				+ educacao + ", dataNascimento=" + dataNascimento + ", listaVeiculos=" + listaVeiculos + "]";
-//	}
-
-	
-
-//	@Override
-//	public String toString() {
-//		return "ClientePF [formatadata=" + formatadata + ", cpf=" + cpf + ", genero=" + genero + ", educacao="
-//				+ educacao + ", dataNascimento=" + dataNascimento + ", listaVeiculos=" + listaVeiculos + ", getNome()="
-//				+ getNome() + ", getTelefone()=" + getTelefone() + ", getEndereco()=" + getEndereco() + ", getEmail()="
-//				+ getEmail() + "]";
-//	}
-	
-	
-
-
-
-
-
-	
-//	public double calculaScore() {
-//		Double Score = null;
-//		Date currDate = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-//		long idade = (TimeUnit.DAYS.convert(Math.abs(currDate.getTime() - this.dataNascimento.getTime()), TimeUnit.MILLISECONDS))/365;
-//		//int qtdveiculo = super.getListaVeiculos().size();
-//		if (idade < 30) {
-//			Score = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_18_30.getValor()*(super.getListaVeiculos().size());
-//			
-//		}
-//		else if (idade >= 30 && idade < 60) {
-//			Score = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_30_60.getValor()*(super.getListaVeiculos().size());
-//
-//		}
-//		else if (idade >= 60) {
-//			Score = CalcSeguro.VALOR_BASE.getValor()*CalcSeguro.FATOR_60_90.getValor()*(super.getListaVeiculos().size());
-//
-//		}
-//
-//		return Score;
-//	}
-//	
-//	@Override
-//	public String toString() {
-//		String tostr = 
-//					 super.toString() + "\n"
-//
-//					+ "CPF: " + this.getCpf() + "\n"
-//					//+ "Validade CPF: " + String.valueOf(this.validarCPF()) + " \n"
-//					+ "Data de nascimento clientePF: " + formatadata.format(this.getDataNascimento()) +"\n";
-//		
-//
-//		return tostr;
-//		
-//	}
-	
-
-
-
 	
 }

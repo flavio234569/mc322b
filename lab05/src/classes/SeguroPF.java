@@ -12,15 +12,14 @@ public class SeguroPF extends Seguro{
 	private Veiculo veiculo;
 	private ClientePF clientePF;
 
-	public SeguroPF(Date dataInicio, Date dataFim, Seguradora seguradora, Veiculo veiculo,
-			ClientePF clientePF) {
-//	public SeguroPF(String dataInicio, String dataFim, Seguradora seguradora, Double valorMensal, Veiculo veiculo,
-//				ClientePF clientePF) {
+	//metodo construtor
+	public SeguroPF(Date dataInicio, Date dataFim, Seguradora seguradora, Veiculo veiculo, ClientePF clientePF) {
 		super(dataInicio, dataFim, seguradora);
 		this.veiculo = veiculo;
 		this.clientePF = clientePF;
 	}
 
+	//metodos getters e setters
 	public Veiculo getVeiculo() {
 		return veiculo;
 	}
@@ -37,18 +36,18 @@ public class SeguroPF extends Seguro{
 		this.clientePF = clientePF;
 	}
 	
+	//metodo para adicionar condutor 
 	public boolean autorizarCondutor(Condutor condutor){
-		
 		for (Condutor condutor1 : this.getListaCondutor()) {
 			if (condutor1.getCpf().equals(condutor.getCpf())) {
 				return false;
 			}
 		}
-		
 		this.getListaCondutor().add(condutor);
 		return true;
 	}
 	
+	//remove o condutor
 	public boolean desautorizarCondutor(Condutor condutor){
 		if(!(this.getListaCondutor()).contains(condutor)) {
 			return false;
@@ -60,27 +59,18 @@ public class SeguroPF extends Seguro{
 		
 	}
 	
+	//gerar sinistro
 	public void gerarSinistro(Date data, String endereco){
 		Sinistro sinistro1 = new Sinistro(data, endereco, null, this);
 		this.getListaSinistros().add(sinistro1);
-		//condutor.adicionarSinistro(sinistro1);
 	}
 	
+	//retorna lista de sinistro por cliente (sinistros do objeto seguro)
 	public List<Sinistro> getListaSinistroPorCliente(){
-
 		return this.getListaSinistros();
-		
-//		List <Sinistro> sinistroPorCliente = new ArrayList<>() ;
-//		
-//		
-//		for (Sinistro sinistro1 : this.getListaSinistros()) {
-//			if (this.clientePF.getCpf().equals(sinistro1.getCondutor().getCpf())) {
-//				sinistroPorCliente.add(sinistro1);
-//			}
-//		}
-//		return sinistroPorCliente;
 	}
 	
+	//retorna lista de sinistro por condutor
 	public List<Sinistro> getListaSinistroPorCondutor(){
 		List <Sinistro> sinistroPorCondutor = new ArrayList<>();
 		for (Condutor condutor1 : this.getListaCondutor()) {
@@ -90,7 +80,7 @@ public class SeguroPF extends Seguro{
 		return sinistroPorCondutor;
 	}
 	
-	
+	//calcula o valor mensal do seguro
 	public void calcularValor(){
 		Date currDate = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		long idade = (TimeUnit.DAYS.convert(Math.abs(currDate.getTime() - this.clientePF.getDataNascimento().getTime()), TimeUnit.MILLISECONDS))/365;

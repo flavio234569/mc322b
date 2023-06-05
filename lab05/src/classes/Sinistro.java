@@ -12,8 +12,8 @@ public class Sinistro {
 	private Condutor condutor;
 	private Seguro seguro;
 	
+	//metodo construtor
 	public Sinistro(Date data, String endereco, Condutor condutor, Seguro seguro) {
-	
 	contador++;
 	this.id = contador;
 	this.data = data;
@@ -27,46 +27,37 @@ public class Sinistro {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public Date getData() {
 		return data;
 	}
 
-
 	public void setData(Date data) {
 		this.data = data;
 	}
-
 
 	public String getEndereco() {
 		return endereco;
 	}
 
-
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
 
 	public Condutor getCondutor() {
 		return condutor;
 	}
 
-
 	public void setCondutor(Condutor condutor) {
 		this.condutor = condutor;
 	}
 
-
 	public Seguro getSeguro() {
 		return seguro;
 	}
-
 
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
