@@ -27,7 +27,7 @@ public class Frota {
 
 
 	public List<Veiculo> getListaVeiculos() {
-		return listaVeiculos;
+		return this.listaVeiculos;
 	}
 
 

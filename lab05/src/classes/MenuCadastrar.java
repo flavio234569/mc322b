@@ -4,7 +4,9 @@ public enum MenuCadastrar {
 
 	CADASTRARCLIENTE("Cadastrar cliente"),
 	CADASTRARVEICULO("Cadastrar veiculo"),
+	CADASTRARFROTA("Cadastrar frota"),
 	CADASTRARSEGURADORA("Cadastrar seguradora"),
+	CADASTRARCONDUTOR("Cadastrar condutor"),
 	VOLTAR("Voltar");
 
 	String stringmenucadastrar;

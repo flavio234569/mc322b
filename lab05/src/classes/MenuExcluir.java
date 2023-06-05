@@ -2,9 +2,11 @@ package classes;
 
 public enum MenuExcluir {
 
-	EXCLUIRCLIENTE("Excluir cliente"),
+	EXCLUIRCLIENTE("Excluir cliente, atenção: remove também os seguros vinculados"),
 	EXCLUIRVEICULO("Exluir veiculo"),
 	EXCLUIRSINISTRO("Excluir sinistro"),
+	EXCLUIRSEGURO("Excluir seguro"),
+	EXCLUIRCONDUTOR("Excluir condutor"),
 	VOLTAR("Voltar");
 
 	String stringmenuexcluir;

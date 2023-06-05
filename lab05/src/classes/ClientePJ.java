@@ -11,17 +11,19 @@ import java.util.stream.Collectors;
 public class ClientePJ extends Cliente{
 	private final String cnpj;
 	private Date dataFundacao;
-	//private int qtdeFuncionario;
+	private int qtdeFuncionario;
 	private List<Frota> listaFrota;
+	//private Frota frota;
 	
 	public ClientePJ(String nome, String telefone,String endereco, String email,
-			String cnpj, Date dataFundacao) {
+			String cnpj, Date dataFundacao, int qtdeFuncionario) {
 		
 		super(nome, telefone, endereco, email); //, listaVeiculos);
 		this.cnpj = cnpj;
 		this.dataFundacao = dataFundacao;
-		//this.qtdeFuncionario =  qtdeFuncionario;
+		this.qtdeFuncionario = qtdeFuncionario;
 		this.listaFrota = new ArrayList<Frota>(); 
+		//this.frota = frota;
 	}
 	
 	
@@ -37,9 +39,31 @@ public class ClientePJ extends Cliente{
 		this.dataFundacao = dataFundacao;
 	}
 
+	public int getQtdeFuncionario() {
+		return qtdeFuncionario;
+	}
+
+
+	public void setQtdeFuncionario(int qtdeFuncionario) {
+		this.qtdeFuncionario = qtdeFuncionario;
+	}
+
+
 	public List<Frota> getListaFrota(){
 		return listaFrota;
 	}
+	
+	
+
+//	public Frota getFrota() {
+//		return frota;
+//	}
+//
+//
+//	public void setFrota(Frota frota) {
+//		this.frota = frota;
+//	}
+
 
 	public boolean cadastrarFrota(Frota frota){
 		
@@ -57,6 +81,10 @@ public class ClientePJ extends Cliente{
 	}
 	
 	public boolean atualizarFrota(Frota frota, Veiculo veiculo){
+		
+		if (!(this.getListaFrota().contains(frota))) {
+			return false;
+		}
 		
 		for (Veiculo veiculo1 : frota.getListaVeiculos()) {
 			if (veiculo1.getPlaca().equals(veiculo.getPlaca())) {
@@ -84,9 +112,10 @@ public class ClientePJ extends Cliente{
 
 	@Override
 	public String toString() {
-		return "ClientePJ [cnpj=" + cnpj + ", dataFundacao=" + dataFundacao + ", getCnpj()=" + getCnpj()
+		return "ClientePJ [cnpj=" + cnpj + ", dataFundacao=" + dataFundacao
 				+ ", getNome()=" + getNome() + ", getTelefone()=" + getTelefone() + ", getEndereco()=" + getEndereco()
-				+ ", getEmail()=" + getEmail() + "]";
+				+ ", getEmail()=" + getEmail() + //"getfrota" + getFrota() +
+				"]";
 	}
 
 	

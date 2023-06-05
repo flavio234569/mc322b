@@ -94,11 +94,27 @@ public class ClientePF extends Cliente{
 
 	@Override
 	public String toString() {
-		return "ClientePF [formatadata=" + formatadata + ", cpf=" + cpf + ", genero=" + genero + ", educacao="
-				+ educacao + ", dataNascimento=" + dataNascimento + ", listaVeiculos=" + listaVeiculos + ", getNome()="
-				+ getNome() + ", getTelefone()=" + getTelefone() + ", getEndereco()=" + getEndereco() + ", getEmail()="
-				+ getEmail() + "]";
+		return "ClientePF [cpf=" + cpf + ", genero=" + genero + ", educacao=" + educacao + ", dataNascimento="
+				+ dataNascimento + ", listaVeiculos=" + listaVeiculos + ", getNome()=" + getNome() + ", getTelefone()="
+				+ getTelefone() + ", getEndereco()=" + getEndereco() + ", getEmail()=" + getEmail() + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "ClientePF [formatadata=" + formatadata + ", cpf=" + cpf + ", genero=" + genero + ", educacao="
+//				+ educacao + ", dataNascimento=" + dataNascimento + ", listaVeiculos=" + listaVeiculos + "]";
+//	}
+
+	
+
+//	@Override
+//	public String toString() {
+//		return "ClientePF [formatadata=" + formatadata + ", cpf=" + cpf + ", genero=" + genero + ", educacao="
+//				+ educacao + ", dataNascimento=" + dataNascimento + ", listaVeiculos=" + listaVeiculos + ", getNome()="
+//				+ getNome() + ", getTelefone()=" + getTelefone() + ", getEndereco()=" + getEndereco() + ", getEmail()="
+//				+ getEmail() + "]";
+//	}
 	
 	
 

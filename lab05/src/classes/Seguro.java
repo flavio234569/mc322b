@@ -7,16 +7,20 @@ import java.util.List;
 public abstract class Seguro {
 
 	private static int contador = 300;
-	private int id;
+	private final int id;
 	private Date dataInicio;
 	private Date dataFim;
+	
+//	private String dataInicio = null;
+//	private String dataFim = null;
 	private Seguradora seguradora;
 	private List<Sinistro> listaSinistros;
 	private List<Condutor> listaCondutor;
-	private int valorMensal;
+	private Double valorMensal;
 	
 	
-	public Seguro(int id, Date dataInicio, Date dataFim, Seguradora seguradora, int valorMensal) {
+	public Seguro(Date dataInicio, Date dataFim, Seguradora seguradora) {
+	//public Seguro(String dataInicio, String dataFim, Seguradora seguradora, Double valorMensal) {
 		
 		contador++;
 		this.id = contador;
@@ -25,7 +29,7 @@ public abstract class Seguro {
 		this.seguradora = seguradora;
 		this.listaSinistros = new ArrayList<Sinistro>();
 		this.listaCondutor = new ArrayList<Condutor>();
-		this.valorMensal = valorMensal;
+		//this.valorMensal = valorMensal;
 	}
 
 
@@ -44,33 +48,33 @@ public abstract class Seguro {
 	}
 
 
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
 
-	public Date getDataInicio() {
-		return dataInicio;
-	}
+//	public Date getDataInicio() {
+//		return dataInicio;
+//	}
 
 
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
+//	public void setDataInicio(Date dataInicio) {
+//		this.dataInicio = dataInicio;
+//	}
 
 
-	public Date getDataFim() {
-		return dataFim;
-	}
+//	public Date getDataFim() {
+//		return dataFim;
+//	}
 
 
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
+//	public void setDataFim(Date dataFim) {
+//		this.dataFim = dataFim;
+//	}
 
 
 	public Seguradora getSeguradora() {
-		return seguradora;
+		return this.seguradora;
 	}
 
 
@@ -99,12 +103,12 @@ public abstract class Seguro {
 //	}
 
 
-	public int getValorMensal() {
+	public Double getValorMensal() {
 		return valorMensal;
 	}
 
 
-	public void setValorMensal(int valorMensal) {
+	public void setValorMensal(Double valorMensal) {
 		this.valorMensal = valorMensal;
 	}
 	
@@ -130,10 +134,24 @@ public abstract class Seguro {
 
 	@Override
 	public String toString() {
-		return "Seguro [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", seguradora=" + seguradora
+		return "Seguro [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim //+ ", seguradora=" + seguradora
 				+ ", listaSinistros=" + listaSinistros + ", listaCondutor=" + listaCondutor + ", valorMensal="
 				+ valorMensal + "]";
 	}
+
+
+
+
+	
+	
+	
+
+//	@Override
+//	public String toString() {
+//		return "Seguro [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", seguradora=" + seguradora
+//				+ ", listaSinistros=" + listaSinistros + ", listaCondutor=" + listaCondutor + ", valorMensal="
+//				+ valorMensal + "]";
+//	}
 	
 	
 	

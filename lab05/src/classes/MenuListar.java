@@ -7,6 +7,8 @@ public enum MenuListar {
 	LISTARSINISTROPCLIENTE("Listar sinistros por cliente"),
 	LISTARVEICULOPCLIENTE("Listar veiculos por cliente"),
 	LISTARVEICULOPSEGURADORA("Listar veiculos por seguradora"),
+	LISTARSEGUROPSEGURADORA("Listar seguro por seguradora"),
+	LISTARSEGUROPCLIENTE("Listar seguro e condutores por cliente"),
 	VOLTAR("Voltar");
 
 	String stringmenucadastrar;

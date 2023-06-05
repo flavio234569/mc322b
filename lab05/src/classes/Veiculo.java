@@ -47,15 +47,24 @@ public class Veiculo {
 		this.anoFabricacao = anoFabricacao;
 	}
 
-	//metodo tostring (traz todos os dados para uma string legivel)
+	@Override
 	public String toString() {
-		String tostr = "\nDados do veiculo \n"  
-					+  "Placa: " + this.getPlaca() + "\n"
-					+ "Marca: " + this.getMarca() + "\n"
-					+ "Modelo: " + this.getModelo() + "\n"
-					+ "Ano de fabricacao: " + this.getAnoFabricacao() + "\n";
-		return tostr;
-				
+		return "Veiculo [placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", anoFabricacao="
+				+ anoFabricacao + "]";
 	}
+
+	
+	
+	
+//	//metodo tostring (traz todos os dados para uma string legivel)
+//	public String toString() {
+//		String tostr = "\nDados do veiculo \n"  
+//					+  "Placa: " + this.getPlaca() + "\n"
+//					+ "Marca: " + this.getMarca() + "\n"
+//					+ "Modelo: " + this.getModelo() + "\n"
+//					+ "Ano de fabricacao: " + this.getAnoFabricacao() + "\n";
+//		return tostr;
+//				
+//	}
 		
 }

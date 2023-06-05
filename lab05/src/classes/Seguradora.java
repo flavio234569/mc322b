@@ -85,27 +85,9 @@ public class Seguradora {
 
 	
 	public List<Seguro> getListaSeguro() {
-		return listaSeguros;
+		return listaSeguros; //.stream().map(Seguro::getId).collect(Collectors.toList());
 	}
 
-	
-	//metodo gerar sinistro, retorna falso se ja existir um sinistro com os mesmos dados e nao cria o sinistro
-//	public boolean gerarSinistro(Date data, String endereco, Veiculo veiculo, Cliente cliente) {
-//		
-//		Sinistro sinistro = new Sinistro(data, endereco, this, veiculo, cliente);
-//		
-//		for (Sinistro elemento_lista_sinistro : this.getListaSinistros()) {
-//			if (elemento_lista_sinistro.getData().equals(sinistro.getData())
-//			&& (elemento_lista_sinistro.getEndereco().equals(sinistro.getEndereco())
-//			&& (elemento_lista_sinistro.getVeiculo().equals(sinistro.getVeiculo())
-//			&& (elemento_lista_sinistro.getCliente().equals(sinistro.getCliente())		)))) {
-//				return false;
-//			}
-//		}
-//		this.listaSinistros.add(sinistro);
-//			calcularPrecoSeguroCliente(cliente);
-//		return true;
-//	}
 	
 	//lista clientes por PJ ou PF como parametro na forma de string
 	//public List<String> listarClientes(String tipoCliente) {
@@ -124,14 +106,29 @@ public class Seguradora {
 					listaCliente.add(cliente);
 				}
 			}
-
 		}
 		//return listaCliente.stream().map(Cliente::getNome).collect(Collectors.toList());
 		return listaCliente;
 	}
 	
-	public boolean gerarSeguro(){
-		return false;
+
+	
+	public boolean gerarSeguro(Date dataInicio, Date dataFim, Frota frota, ClientePJ clientePJ){
+
+		SeguroPJ seguroPJ1 = new SeguroPJ(dataInicio, dataFim, this, frota, clientePJ);
+		this.listaSeguros.add(seguroPJ1);
+
+	return true;
+	
+}
+	
+	public boolean gerarSeguro(Date dataInicio, Date dataFim, Veiculo veiculo, ClientePF clientePF){
+	//public boolean gerarSeguro(String dataInicio, String dataFim, Double valorMensal, Veiculo veiculo, ClientePF clientePF){
+
+			SeguroPF seguroPF1 = new SeguroPF(dataInicio, dataFim, this, veiculo, clientePF);
+			this.getListaSeguro().add(seguroPF1);
+
+		return true;
 		
 	}
 	
@@ -211,10 +208,39 @@ public class Seguradora {
 //	}
 	
 	
-	public List<Seguro> getSeguroPorCliente(){
-		return listaSeguros;
+	public List<Seguro> getSeguroPorCliente(ClientePJ clientePJ){
+		List <Seguro> listaSeguroPorCliente = new ArrayList<Seguro>();
+		for (int i = 0; i < this.listaSeguros.size(); i++) {
+			if (this.listaSeguros.get(i) instanceof SeguroPJ) {
+				if (((SeguroPJ)this.listaSeguros.get(i)).getClientePJ().equals(clientePJ)) {
+					listaSeguroPorCliente.add(((SeguroPJ)this.listaSeguros.get(i)));
+				}
+			}
+
+		}
+		
+		return listaSeguroPorCliente;
 		
 	}
+	
+
+	
+	public List<Seguro> getSeguroPorCliente(ClientePF clientePF){
+		List <Seguro> listaSeguroPorCliente = new ArrayList<Seguro>();
+		for (int i = 0; i < this.listaSeguros.size(); i++) {
+			if (this.listaSeguros.get(i) instanceof SeguroPF) {
+				if (((SeguroPF)this.listaSeguros.get(i)).getClientePF().equals(clientePF)) {
+					listaSeguroPorCliente.add(((SeguroPF)this.listaSeguros.get(i)));
+				}
+			}
+
+		}
+		
+		return listaSeguroPorCliente;
+		
+	}
+	
+	
 	
 	public List<Sinistro> getSinistrosPorCliente(){
 		return null;
@@ -232,22 +258,34 @@ public class Seguradora {
 		
 		return receitatotal;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Seguradora [cnpj=" + cnpj + ", nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco
+				+ ", email=" + email + ", listaClientes=" + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList())
+				+ ", listaSeguros=" + this.getListaSeguro().stream().map(Seguro::getId).collect(Collectors.toList())  //+ this.getListaSeguro() + "]"
+				;
+	}
+
+
+
 	
 	
 	//metodo tostring (traz todos os dados para uma string legivel)
-	public String toString() {
-		String tostr = "\nDados da seguradora \n"  
-					+  "Nome da seguradora: " + this.getNome() + "\n"
-					+ "Telefone da seguradora: " + this.getTelefone() + "\n"
-					+ "E-mail da seguradora: " + this.getEmail() + "\n"
-					+ "Endereco da seguradora: " + this.getEndereco() + "\n"
-//					+ "Lista de sinistros por id: " + this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n"
-//					+ "Lista de sinistros por cliente: " + this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
-					+ "Lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
-					+ "Lista de clientes PJ" + this.listarClientes("PJ").stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
-					+ "Lista de clientes PF" + this.listarClientes("PF").stream().map(Cliente::getNome).collect(Collectors.toList());
-		
-		return tostr;
-				
-	}
+//	public String toString() {
+//		String tostr = "\nDados da seguradora \n"  
+//					+  "Nome da seguradora: " + this.getNome() + "\n"
+//					+ "Telefone da seguradora: " + this.getTelefone() + "\n"
+//					+ "E-mail da seguradora: " + this.getEmail() + "\n"
+//					+ "Endereco da seguradora: " + this.getEndereco() + "\n"
+////					+ "Lista de sinistros por id: " + this.getListaSinistros().stream().map(Sinistro::getId).collect(Collectors.toList()) + "\n"
+////					+ "Lista de sinistros por cliente: " + this.getListaSinistros().stream().map(Sinistro::getCliente).collect(Collectors.toList()).stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+//					+ "Lista de clientes: " + this.getListaClientes().stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+//					+ "Lista de clientes PJ" + this.listarClientes("PJ").stream().map(Cliente::getNome).collect(Collectors.toList()) + "\n"
+//					+ "Lista de clientes PF" + this.listarClientes("PF").stream().map(Cliente::getNome).collect(Collectors.toList());
+//		
+//		return tostr;
+//				
+//	}
 }

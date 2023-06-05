@@ -12,25 +12,6 @@ public class Sinistro {
 	private Condutor condutor;
 	private Seguro seguro;
 	
-	
-//	private Seguradora seguradora;
-//	private Veiculo veiculo;
-//	private Cliente cliente;
-	
-
-	
-	//metodo construtor
-//	public Sinistro( Date data, String endereco, Seguradora seguradora, Veiculo veiculo, Cliente cliente) {
-//		contador++;
-//		this.id = contador;
-//		this.data = data;
-//		this.endereco = endereco;
-//		this.seguradora = seguradora;
-//		this.veiculo = veiculo;
-//		this.cliente = cliente;
-//		
-//	}
-	
 	public Sinistro(Date data, String endereco, Condutor condutor, Seguro seguro) {
 	
 	contador++;
